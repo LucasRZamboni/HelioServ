@@ -1,7 +1,9 @@
 import React from 'react';
 import { Sun, Wind, Battery, Wrench, Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight, Star, Zap, Shield } from 'lucide-react';
+import { useWhatsApp } from './hooks/useWhatsApp';
 
 function App() {
+  const { openWhatsApp } = useWhatsApp();
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -11,7 +13,7 @@ function App() {
             <Sun className="h-8 w-8 text-yellow-500" />
             <span className="text-2xl font-bold text-gray-800">Helioserv</span>
           </div>
-          
+
           <nav className="hidden md:flex space-x-8">
             <a href="#inicio" className="text-gray-600 hover:text-yellow-500">Início</a>
             <a href="#sobre" className="text-gray-600 hover:text-yellow-500">Sobre Nós</a>
@@ -20,8 +22,10 @@ function App() {
             <a href="#depoimentos" className="text-gray-600 hover:text-yellow-500">Depoimentos</a>
             <a href="#contato" className="text-gray-600 hover:text-yellow-500">Contato</a>
           </nav>
-          
-          <button className="bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition-colors">
+
+          <button
+            onClick={openWhatsApp}
+            className="bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition-colors">
             Solicite um Orçamento
           </button>
         </div>
@@ -36,7 +40,9 @@ function App() {
           <div className="max-w-3xl text-white py-32">
             <h1 className="text-5xl font-bold mb-6">Energia Solar para um Futuro Sustentável e Econômico</h1>
             <p className="text-xl mb-8">Na Helioserv, oferecemos soluções completas em energia solar, desde a instalação até a manutenção de equipamentos de alta qualidade.</p>
-            <button className="bg-yellow-500 text-white px-8 py-3 rounded-full text-lg hover:bg-yellow-600 transition-colors">
+            <button
+              onClick={openWhatsApp}
+              className="bg-yellow-500 text-white px-8 py-3 rounded-full text-lg hover:bg-yellow-600 transition-colors">
               Solicite um Orçamento Gratuito
             </button>
           </div>
@@ -50,8 +56,8 @@ function App() {
             <div>
               <h2 className="text-4xl font-bold mb-6">Quem Somos</h2>
               <p className="text-gray-600 text-lg mb-8">
-                A Helioserv é especializada em energia solar, com anos de experiência no mercado. 
-                Nosso compromisso é oferecer soluções personalizadas, sustentáveis e econômicas 
+                A Helioserv é especializada em energia solar, com anos de experiência no mercado.
+                Nosso compromisso é oferecer soluções personalizadas, sustentáveis e econômicas
                 para residências e empresas.
               </p>
               <button className="flex items-center text-yellow-500 hover:text-yellow-600 font-semibold">
@@ -60,7 +66,7 @@ function App() {
               </button>
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl">
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="Equipe Helioserv"
                 className="w-full h-full object-cover"
@@ -175,8 +181,8 @@ function App() {
             ].map((product, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="relative">
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className="w-full h-48 object-cover"
                   />
@@ -197,7 +203,9 @@ function App() {
                       </li>
                     ))}
                   </ul>
-                  <button className="w-full bg-gray-100 text-gray-800 py-2 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors flex items-center justify-center">
+                  <button
+                    onClick={openWhatsApp}
+                    className="w-full bg-gray-100 text-gray-800 py-2 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors flex items-center justify-center">
                     <Zap className="h-4 w-4 mr-2" />
                     Solicitar Orçamento
                   </button>
@@ -253,8 +261,8 @@ function App() {
             ].map((testimonial, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
                 <div className="flex items-center mb-4">
-                  <img 
-                    src={testimonial.image} 
+                  <img
+                    src={testimonial.image}
                     alt={testimonial.name}
                     className="w-16 h-16 rounded-full object-cover mr-4"
                   />

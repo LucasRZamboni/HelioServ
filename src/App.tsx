@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Wind, Battery, Wrench, Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight, Star, Zap, Shield } from 'lucide-react';
+import { Sun, Wind, Battery, Wrench, Facebook, Instagram, /*Linkedin, Mail,*/ Phone, MapPin, ChevronRight, Star, Zap, Shield } from 'lucide-react';
 import { useWhatsApp } from './hooks/useWhatsApp';
 
 function App() {
@@ -290,20 +290,42 @@ function App() {
             <h2 className="text-4xl font-bold text-center mb-8">Entre em Contato</h2>
             <div className="grid md:grid-cols-2 gap-12">
               <div>
-                <form className="space-y-6">
+                <form
+                  action="https://formspree.io/f/xvgzgleb"
+                  method="POST"
+                  className="space-y-6"
+                >
                   <div>
                     <label className="block text-gray-700 mb-2">Nome</label>
-                    <input type="text" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent" />
+                    <input
+                      type="text"
+                      name="name"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="block text-gray-700 mb-2">Email</label>
-                    <input type="email" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent" />
+                    <input
+                      type="email"
+                      name="email"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="block text-gray-700 mb-2">Mensagem</label>
-                    <textarea className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent" rows={4}></textarea>
+                    <textarea
+                      name="message"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                      rows={4}
+                      required
+                    ></textarea>
                   </div>
-                  <button className="w-full bg-yellow-500 text-white py-3 rounded-lg hover:bg-yellow-600 transition-colors">
+                  <button
+                    type="submit"
+                    className="w-full bg-yellow-500 text-white py-3 rounded-lg hover:bg-yellow-600 transition-colors"
+                  >
                     Enviar Mensagem
                   </button>
                 </form>
@@ -311,25 +333,18 @@ function App() {
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <MapPin className="h-6 w-6 text-yellow-500" />
-                  <span className="text-gray-600">Rua Example, 123 - Cidade, Estado</span>
+                  <span className="text-gray-600">Itu, São Paulo</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone className="h-6 w-6 text-yellow-500" />
-                  <span className="text-gray-600">(11) 1234-5678</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Mail className="h-6 w-6 text-yellow-500" />
-                  <span className="text-gray-600">contato@helioserv.com</span>
+                  <span className="text-gray-600">+55 (11) 99967-0155</span>
                 </div>
                 <div className="flex space-x-4 pt-4">
-                  <a href="#" className="text-gray-400 hover:text-yellow-500">
+                  <a href="https://www.facebook.com/HelioServItu" className="text-gray-400 hover:text-yellow-500">
                     <Facebook className="h-6 w-6" />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-yellow-500">
+                  <a href="https://www.instagram.com/helioserv/" className="text-gray-400 hover:text-yellow-500">
                     <Instagram className="h-6 w-6" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-yellow-500">
-                    <Linkedin className="h-6 w-6" />
                   </a>
                 </div>
               </div>
@@ -365,12 +380,12 @@ function App() {
               <ul className="space-y-2">
                 <li className="flex items-center space-x-2">
                   <Phone className="h-4 w-4 text-yellow-500" />
-                  <span className="text-gray-400">(11) 1234-5678</span>
+                  <span className="text-gray-400">+55 (11) 99967-0155</span>
                 </li>
-                <li className="flex items-center space-x-2">
+                {/* <li className="flex items-center space-x-2">
                   <Mail className="h-4 w-4 text-yellow-500" />
                   <span className="text-gray-400">contato@helioserv.com</span>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

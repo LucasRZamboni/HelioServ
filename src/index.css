@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  user-select: none; /* Impede a seleção de texto */
+  -webkit-user-select: none; /* Para navegadores baseados em WebKit (Chrome, Safari) */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
 .hidden {
   display: none;
 }

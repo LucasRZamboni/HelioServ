@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Sun, Wind, Battery, Wrench, Facebook, Instagram, /*Linkedin, Mail,*/ Phone, MapPin, ChevronRight, Star, Zap, Shield } from 'lucide-react';
 import { useWhatsApp } from './hooks/useWhatsApp';
+import { handleSubmit } from './hooks/sendMail';
+import './index.css';
 
 function App() {
   const { openWhatsApp } = useWhatsApp();
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const notificationRef = useRef<HTMLDivElement>(null);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formRef.current && notificationRef.current) {
+      handleSubmit(formRef.current, notificationRef.current);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -219,7 +232,7 @@ function App() {
       {/* Testimonials Section */}
       <section id="depoimentos" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">O Que Nossos Clientes Dizem</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">Depoimentos de nossos clientes</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -283,17 +296,25 @@ function App() {
         </div>
       </section>
 
+
+
       {/* Contact Form */}
       <section id="contato" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
+        
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8">
             <h2 className="text-4xl font-bold text-center mb-8">Entre em Contato</h2>
+            {/* Notificação */}
+            
             <div className="grid md:grid-cols-2 gap-12">
+            
               <div>
                 <form
+                  ref={formRef}
                   action="https://formspree.io/f/xvgzgleb"
                   method="POST"
                   className="space-y-6"
+                  onSubmit={onSubmit}
                 >
                   <div>
                     <label className="block text-gray-700 mb-2">Nome</label>
@@ -331,15 +352,15 @@ function App() {
                 </form>
               </div>
               <div className="space-y-6">
-                <div className="flex items-center space-x-4">
+                <div className="flex justify-center items-center space-x-4">
                   <MapPin className="h-6 w-6 text-yellow-500" />
                   <span className="text-gray-600">Itu, São Paulo</span>
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex justify-center items-center space-x-4">
                   <Phone className="h-6 w-6 text-yellow-500" />
                   <span className="text-gray-600">+55 (11) 99967-0155</span>
                 </div>
-                <div className="flex space-x-4 pt-4">
+                <div className="flex justify-center space-x-4 pt-4">
                   <a href="https://www.facebook.com/HelioServItu" className="text-gray-400 hover:text-yellow-500">
                     <Facebook className="h-6 w-6" />
                   </a>
@@ -351,6 +372,14 @@ function App() {
             </div>
           </div>
         </div>
+        <div
+              id="notification"
+              ref={notificationRef}
+              className="hidden fixed top-4 right-4  bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg"
+            >
+              Mensagem enviada com sucesso!
+            </div>
+
       </section>
 
       {/* Footer */}

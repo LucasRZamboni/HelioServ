@@ -38,7 +38,7 @@ function App() {
 
           <button
             onClick={openWhatsApp}
-            className="bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition-colors">
+            className="bg-yellow-500 text-white px-3 py-2 rounded-full md-px-3 hover:bg-yellow-600 transition-colors">
             Solicite um Orçamento
           </button>
         </div>
